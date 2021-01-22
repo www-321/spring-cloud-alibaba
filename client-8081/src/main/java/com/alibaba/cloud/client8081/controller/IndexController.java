@@ -24,6 +24,12 @@ public class IndexController {
         return "api";
     }
 
+    @GetMapping("/provider/sen")
+    public String gat2e() {
+
+        return "provider";
+    }
+
 
     @GetMapping("/api/provider/s")
     public String s() {

@@ -10,6 +10,15 @@ spring:
           uri: lb://consumer
           predicates:
             - Path=/api/provider/**
+          filters:
+            # http://localhost:3003/api/provider/sen --> http://consumer/api/provider/sen
+            # StripPrefix去掉前面个数， 所以就是 转发地址： http://consumer/provider/sen
+            - StripPrefix=1
+        - id: baidu-route
+          uri: http://www.baidu.com
+          predicates:
+            - Path=/baidu/**
+
     nacos:
       discovery:
         enabled: true
