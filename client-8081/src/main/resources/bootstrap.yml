@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: consumer
+
+  cloud:
+    nacos:
+      discovery:
+        enabled: true
+        server-addr: 127.0.0.1:8848
+      config:
+        file-extension: yml
+        server-addr: ${spring.cloud.nacos.discovery.server-addr}
+    sentinel:
+        transport:
+          port: 8719
+          dashboard: localhost:8080

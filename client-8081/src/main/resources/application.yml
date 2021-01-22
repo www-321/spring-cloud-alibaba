@@ -1,0 +1,16 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+logging:
+  level:
+    com:
+      alibaba:
+        cloud:
+          client8081: debug
+
+
+#feign:
+#  sentinel:
+#    enabled: true
