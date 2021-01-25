@@ -14,3 +14,14 @@ spring:
         transport:
           port: 8719
           dashboard: localhost:8080
+        datasource:
+          ds-flow:
+            nacos:
+              server-addr: ${spring.cloud.nacos.discovery.server-addr}
+              dataId: flow_control
+              groupId: SENTINEL_SPACE
+              dataType: json
+              ruleType: flow
+
+
+

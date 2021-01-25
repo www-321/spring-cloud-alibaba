@@ -1,7 +1,10 @@
 package com.alibaba.cloud.client8081.controller;
 
 import com.alibaba.cloud.client8081.service.IndexFeignService;
+import com.alibaba.csp.sentinel.Entry;
+import com.alibaba.csp.sentinel.SphU;
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
+import com.alibaba.csp.sentinel.slots.block.BlockException;
 import org.bouncycastle.operator.MacCalculatorProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -56,11 +59,13 @@ public class IndexController {
     }
 
 
-    @SentinelResource(value = "sen", fallback = "fall")
+    @SentinelResource(value = "sen")
     @GetMapping("sen")
-    public String sentinel() {
+    public String sentinel() throws InterruptedException {
+
 
         return "sen";
+
     }
 
     public String fall() {
