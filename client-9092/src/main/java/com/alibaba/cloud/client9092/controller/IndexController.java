@@ -5,8 +5,6 @@ import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.*;
-
-import javax.jnlp.UnavailableServiceException;
 @RefreshScope
 @RestController
 public class IndexController {

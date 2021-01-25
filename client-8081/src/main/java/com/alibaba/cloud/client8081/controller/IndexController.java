@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 @RestController
 public class IndexController {
@@ -63,8 +64,7 @@ public class IndexController {
     @GetMapping("sen")
     public String sentinel() throws InterruptedException {
 
-
-        return "sen";
+        return indexFeignService.getPort(new HashMap<>()) + "";
 
     }
 
@@ -72,5 +72,25 @@ public class IndexController {
         return "error";
     }
 
+
+    @GetMapping("down")
+    @SentinelResource(value = "down")
+    public Integer down(Integer size){
+
+        return indexFeignService.getPort(new HashMap<>());
+    }
+
+
+    public Integer fall_down(Integer size) {
+        return 0;
+    }
+
+
+    @GetMapping("param")
+    @SentinelResource(value = "param")
+    public Integer param(Integer size){
+
+        return indexFeignService.getPort(new HashMap<>());
+    }
 
 }

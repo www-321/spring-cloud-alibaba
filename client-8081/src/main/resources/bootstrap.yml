@@ -15,13 +15,44 @@ spring:
           port: 8719
           dashboard: localhost:8080
         datasource:
+          # 流控规则
           ds-flow:
             nacos:
               server-addr: ${spring.cloud.nacos.discovery.server-addr}
               dataId: flow_control
-              groupId: SENTINEL_SPACE
+              groupId: SENTINEL_GROUP
+              namespace: SENTINEL_SPACE
               dataType: json
               ruleType: flow
+          # 降级
+          ds-degrade:
+            nacos:
+              server-addr: ${spring.cloud.nacos.discovery.server-addr}
+              dataId: degrade_control
+              groupId: SENTINEL_GROUP
+              namespace: SENTINEL_SPACE
+              dataType: json
+              ruleType: degrade
+          # 网关限流
+          ds-gwflow:
+            nacos:
+               server-addr: ${spring.cloud.nacos.discovery.server-addr}
+               dataId: param_flow_control
+               groupId: SENTINEL_GROUP
+               namespace: SENTINEL_SPACE
+               dataType: json
+               ruleType: param-flow
 
 
 
+
+feign:
+  sentinel:
+    enabled: true
+
+
+ribbon:
+  ###指的是建立连接所用的时间，适用于网络状况正常的情况下，两端连接所用的时间。
+  ReadTimeout: 2000
+  ###指的是建立连接后从服务器读取到可用资源所用的时间
+  ConnectTimeout: 3000

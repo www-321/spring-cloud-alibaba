@@ -1,5 +1,6 @@
 package com.alibaba.cloud.client8081.service;
 
+import com.alibaba.cloud.client8081.config.IndexFeignFallback;
 import feign.QueryMap;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.cloud.openfeign.SpringQueryMap;
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.Map;
 
-@FeignClient("provider")
+@FeignClient(value = "provider", fallback = IndexFeignFallback.class)
 public interface IndexFeignService {
 
     @GetMapping("port")
