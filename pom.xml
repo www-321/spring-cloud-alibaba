@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.alibaba.cloud</groupId>
-    <artifactId>demo</artifactId>
+    <artifactId>alibaba-cloud</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>demo</name>
     <packaging>pom</packaging>
