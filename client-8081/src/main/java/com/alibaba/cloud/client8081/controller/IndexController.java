@@ -7,13 +7,15 @@ import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.alibaba.csp.sentinel.slots.block.BlockException;
 import org.bouncycastle.operator.MacCalculatorProvider;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
-
+@RefreshScope
 @RestController
 public class IndexController {
 
@@ -21,11 +23,19 @@ public class IndexController {
     private IndexFeignService indexFeignService;
 
 
+    @Value("${name}")
+    String name;
 
     @GetMapping("/api/provider/sen")
     public String gate() {
 
         return "api";
+    }
+
+    @GetMapping("/name")
+    public String getName22() {
+
+        return name;
     }
 
     @GetMapping("/provider/sen")
