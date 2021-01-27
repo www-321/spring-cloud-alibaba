@@ -38,6 +38,7 @@ public class CustomFlowRule {
     }
 
     public Converter<String, List<FlowRule>> converter() {
+
         return content -> {
 
             JSONArray array = JSON.parseArray(content);

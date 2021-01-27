@@ -14,8 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
-@RefreshScope
+
 @RestController
 public class IndexController {
 
@@ -23,19 +22,11 @@ public class IndexController {
     private IndexFeignService indexFeignService;
 
 
-    @Value("${name}")
-    String name;
 
     @GetMapping("/api/provider/sen")
     public String gate() {
 
         return "api";
-    }
-
-    @GetMapping("/name")
-    public String getName22() {
-
-        return name;
     }
 
     @GetMapping("/provider/sen")
@@ -96,11 +87,33 @@ public class IndexController {
     }
 
 
+    /**
+     * 热点参数限流
+     * @param p1
+     * @param p2
+     * @return
+     */
     @GetMapping("param")
-    @SentinelResource(value = "param")
-    public Integer param(Integer size){
+    @SentinelResource(value = "hot_param",blockHandler = "hotHandler")
+    public Object param(Integer p1, Integer p2){
 
-        return indexFeignService.getPort(new HashMap<>());
+        return "hot";
     }
+
+    public Object hot(Integer p1, Integer p2) {
+        return "fall";
+    }
+
+
+    public Object hotHandler(Integer p1, Integer p2, BlockException b) {
+        return "hotHandler";
+    }
+
+
+
+
+
+
+
 
 }
