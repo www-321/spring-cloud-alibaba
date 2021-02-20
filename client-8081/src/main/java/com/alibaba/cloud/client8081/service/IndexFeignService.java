@@ -7,6 +7,7 @@ import org.springframework.cloud.openfeign.SpringQueryMap;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Map;
 
@@ -20,5 +21,8 @@ public interface IndexFeignService {
     @PostMapping(value = "post", consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
     public Integer postPort(Map<String, Object> param);
 
+
+    @GetMapping("param")
+    public Integer param(@RequestParam("name") String name);
 
 }

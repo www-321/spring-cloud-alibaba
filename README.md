@@ -1,5 +1,8 @@
 # spring-cloud-alibaba
 
+## feign 和 sentinel都有降级配置
+1，A 接口配置feign降级，B 配置sentinel降级，A调用B，B出现异常（sentinel此时把异常请求包装成正常请求，返回给A），所以客户端最终返回的是B的降级信息
+2，A 调用B时候，B的服务停止，客户端最终返回A配置的feign降级信息
 ## client-8081主要内容
 # 限流
  * 自定义流控规则
