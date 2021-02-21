@@ -14,6 +14,14 @@
  * controlBehavior	流控效果（直接拒绝/WarmUp/匀速+排队等待），不支持按调用关系限流	直接拒绝
  * clusterMode	是否集群限流	否
  
+ nacos持久化配置exp：
+ [{
+ 	"resource": "sen",
+ 	"count": 3,
+ 	"grade": 0
+ }]
+ 
+ 
 # 熔断降级
 Sentinel 提供以下几种熔断策略：
 

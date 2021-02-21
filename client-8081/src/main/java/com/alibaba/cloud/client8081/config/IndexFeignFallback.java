@@ -8,7 +8,7 @@ import java.util.Map;
 public class IndexFeignFallback implements IndexFeignService {
     @Override
     public Integer getPort(Map<String, Object> param) {
-        return 0;
+        return 1;
     }
 
     @Override
