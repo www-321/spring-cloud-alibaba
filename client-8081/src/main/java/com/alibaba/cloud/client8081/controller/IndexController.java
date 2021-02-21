@@ -23,9 +23,6 @@ public class IndexController {
     private IndexFeignService indexFeignService;
 
 
-    @Value("${name}")
-    String name;
-
     @GetMapping("/api/provider/sen")
     public String gate() {
 
@@ -35,7 +32,7 @@ public class IndexController {
     @GetMapping("/name")
     public String getName22() {
 
-        return name;
+        return "";
     }
 
     @GetMapping("/provider/sen")

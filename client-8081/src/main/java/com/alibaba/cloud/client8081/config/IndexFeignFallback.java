@@ -15,4 +15,9 @@ public class IndexFeignFallback implements IndexFeignService {
     public Integer postPort(Map<String, Object> param) {
         return 0;
     }
+
+    @Override
+    public Integer param(String name) {
+        return 2333;
+    }
 }
