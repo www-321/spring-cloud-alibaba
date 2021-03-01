@@ -21,6 +21,8 @@
         <module>client-9091</module>
         <module>client-9092</module>
         <module>api-gateway</module>
+        <module>cloud-alibaba-admin</module>
+
     </modules>
 
     <properties>
