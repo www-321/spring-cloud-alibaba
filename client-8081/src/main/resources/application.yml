@@ -1,3 +1,18 @@
+spring:
+  #   admin 监控平台
+  #  boot:
+  #    admin:
+  #      client:
+  #        url: http://127.0.0.1:6688
+
+  # ${prefix}-${spring.profiles.active}.${file-extension}
+  ## nacos 配置文件  consumer-dev.yml
+  application:
+    name: consumer
+  profiles:
+    active: dev
+
+
 management:
   endpoints:
     web:
@@ -17,9 +32,8 @@ logging:
 
 #feign:
 #  sentinel:
-spring:
-  boot:
-    admin:
-      client:
-        url: http://127.0.0.1:6688
 #    enabled: true
+
+
+
+

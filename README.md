@@ -1,5 +1,16 @@
 # spring-cloud-alibaba
 
+# nacos 配置文件名称定义规则
+${prefix}-${spring.profiles.active}.${file-extension}
+1，prefix 默认为 spring.application.name 的值，
+   也可以通过配置项 spring.cloud.nacos.config.prefix来配置
+2，spring.profiles.active 即为当前环境对应的 profile，详情可以参考 Spring Boot文档。 
+  注意：当 spring.profiles.active 为空时，对应的连接符 - 也将不存在，
+  dataId 的拼接格式变成 ${prefix}.${file-extension}
+3，file-exetension 为配置内容的数据格式，
+  可以通过配置项 spring.cloud.nacos.config.file-extension 来配置。
+  目前只支持 properties 和 yaml 类型
+
 ## feign 和 sentinel都有降级配置
 1，A 接口配置feign降级，B 配置sentinel降级，A调用B，B出现异常（sentinel此时把异常请求包装成正常请求，返回给A），所以客户端最终返回的是B的降级信息
 2，A 调用B时候，B的服务停止，客户端最终返回A配置的feign降级信息
